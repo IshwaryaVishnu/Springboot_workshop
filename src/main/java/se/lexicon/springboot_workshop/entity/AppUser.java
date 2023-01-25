@@ -22,20 +22,18 @@ public class AppUser {
         this.regDate= LocalDate.now();
     }
 
-    public AppUser(int appUserId, String username, String password, LocalDate regDate) {
+    public AppUser(int appUserId, String username, String password) {
         this();
         this.appUserId = appUserId;
         this.username = username;
         this.password = password;
-        this.regDate = regDate;
     }
 
-    public AppUser(int appUserId, String username, String password, LocalDate regDate, Details details) {
+    public AppUser(int appUserId, String username, String password,  Details details) {
         this();
         this.appUserId = appUserId;
         this.username = username;
         this.password = password;
-        this.regDate = regDate;
         setDetails(details);
     }
 

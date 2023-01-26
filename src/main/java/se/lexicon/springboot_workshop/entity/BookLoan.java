@@ -11,9 +11,11 @@ public class BookLoan {
     private LocalDate loanDate;
     private LocalDate dueDate;
     private Boolean returned;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "Details_id")
     private AppUser borrower;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "Details_id")
     private Book book;
     public BookLoan() {
     }

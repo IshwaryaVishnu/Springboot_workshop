@@ -16,7 +16,7 @@ public class Author {
     @Column(nullable = false, length = 100)
     private String lastName;
     @ManyToMany()
-    @JoinTable(name = "Author_Books"
+    @JoinTable(name = "bookFinders"
             , joinColumns = @JoinColumn(name = "Author_id")
             , inverseJoinColumns = @JoinColumn(name = "Book_id")
     )

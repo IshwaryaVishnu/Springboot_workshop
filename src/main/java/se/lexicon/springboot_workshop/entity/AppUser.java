@@ -1,6 +1,7 @@
 package se.lexicon.springboot_workshop.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +18,11 @@ public class AppUser {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name ="Details_id")
     private Details details;
-//Constructor
+
+    @OneToMany(mappedBy = "borrower", orphanRemoval = true)
+    private List<BookLoan> loans;
+
+    //Constructor
     public AppUser() {
         this.regDate= LocalDate.now();
     }
@@ -75,7 +80,17 @@ public class AppUser {
     }
 
     public void setDetails(Details details) {
+        //bi directional
+        if (details != null) getDetails();
         this.details = details;
+    }
+
+    public List<BookLoan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(List<BookLoan> loans) {
+        this.loans = loans;
     }
 
     @Override

@@ -18,6 +18,11 @@ public class Details {
        public Details() {
     }
 
+    public Details(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+
     public Details(int detailsId, String email, String name, LocalDate birthDate) {
         this.detailsId = detailsId;
         this.email = email;
@@ -79,5 +84,7 @@ public class Details {
                 ", birthDate=" + birthDate +
                 '}';
     }
+
+
 }
 

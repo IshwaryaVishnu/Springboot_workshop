@@ -1,6 +1,7 @@
 package se.lexicon.springboot_workshop.entity;
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Book {
@@ -13,6 +14,9 @@ public class Book {
     private String title;
     @Column(nullable = false, length = 100)
     private  int maxLoanDays;
+
+    @ManyToMany(mappedBy = "bookFinders")
+    private Set<Author> Authors;
 
     public Book() {
     }
@@ -59,6 +63,14 @@ public class Book {
 
     public void setMaxLoanDays(int maxLoanDays) {
         this.maxLoanDays = maxLoanDays;
+    }
+
+    public Set<Author> getAuthors() {
+        return Authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        Authors = authors;
     }
 
     @Override
